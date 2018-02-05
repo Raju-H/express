@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% if instance %}
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Car</th>
+        <th>Driver</th>
+        <th>Trip Number</th>
+        <th>Dieasel Liter</th>
+        <th>Diease Amount</th>
+        <th>Feri/Bridge</th>
+        <th>Police/Labour</th>
+        <th>Chada</th>
+        <th>Khoraki</th>
+        <th>Car Parts</th>
+        <th>Others</th>
+        <th>Date</th>
+        <th>Totall Blance</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ instance.car_no }}</td>
+        <td>{{ instance.driver_name }}</td>
+        <td>{{ instance.trip_number }}</td>
+        <td>{{ instance.dieasel_liter }}</td>
+        <td>{{ instance.dieasel_amount }}</td>
+        <td>{{ instance.feri_bridge }}</td>
+        <td>{{ instance.police_labour }}</td>
+        <td>{{ instance.chada }}</td>
+        <td>{{ instance.khoraki }}</td>
+        <td>{{ instance.car_parts }}</td>
+        <td>{{ instance.others }}</td>
+        <td>{{ instance.addedon }}</td>
+        <td>{{ instance.results}}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Trip List:</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Trip Description</th>
+            <th>Trip Earn</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in instance.triplist_set.all %}
+        <tr>
+            <td>{{ i.trip_description }}</td>
+            <td>{{ i.trip_earn_total }}</td>
+
+        </tr>
+        {% endfor %}
+    <tr>
+        <td>Totall</td>
+        <td>Totall</td>
+    </tr>
+    </tbody>
+
+
+</table>
+
+
+{% endif %}
+</body>
+</html>

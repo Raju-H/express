@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<a href="pdf/"><button>PDF</button></a>
+{% for result in queryset %}
+
+<h2>{{ result.car_number }}</h2>
+
+{% for i in result.tripcost_set.all %}
+
+<a href="{{i.get_absolute_url}}">{{ i.trip_number }}</a><br><br>
+
+{% endfor %}
+
+{% endfor %}
+</body>
+</html>
