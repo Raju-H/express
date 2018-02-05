@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import TripCost, CarList
+from .models import TripCost, CarList, TripList
+from django.db.models import Sum
 
 from django.http import HttpResponse
 from django.views.generic import View
@@ -27,8 +28,14 @@ def car_list(request):
 
 def details_report(request, id):
     instance = get_object_or_404(TripCost, id=id)
+
+    trip_cost_obj = TripCost.objects.get(id=id)
+
+    trip_list_earn = TripList.objects.filter(trip_no=trip_cost_obj).aggregate(Sum('trip_earn'))
+
     context = {
         'title': 'Welcome | Report',
         'instance': instance,
+        'total_earn': trip_list_earn,
     }
     return render(request, 'details.html', context)
