@@ -64,8 +64,12 @@
         </tr>
         {% endfor %}
     <tr>
-        <td>Totall</td>
+        <td>Totall Trip earn =</td>
         <td>{{ total_earn.trip_earn__sum }}</td>
+    </tr>
+    <tr>
+        <td>Totall + </td>
+        <td>{{ total_earn.trip_earn__sum|add:instance.results }}</td>
     </tr>
     </tbody>
 

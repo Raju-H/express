@@ -9,9 +9,6 @@ class CarList(models.Model):
     def __str__(self):
         return str(self.car_number)
 
-    # def get_absolute_url(self):
-    #     return reverse('carlist', kwargs={'id': self.id})
-
     class Meta:
         ordering = ['-addedon']
 
